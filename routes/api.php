@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V01\Auth\AuthController;
+use App\Http\Controllers\API\V01\Channel\Channelcontroller;
 use App\Http\Controllers\postcontroller;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -19,6 +20,16 @@ Route::prefix('/v1')->group(function(){
         Route::post('/login'    , [AuthController::class , 'login'   ])->name('auth.login');
         Route::get('/user' ,      [AuthController::class ,  'user'   ])->name('auth.user');
         Route::post('/logout'   , [AuthController::class , 'logout'  ])->name('auth.logout');
+    });
+
+
+
+
+    //channel Routs
+
+    Route::prefix('/channel')->group(function(){
+
+        Route::get('/all'      ,[Channelcontroller::class , 'grtAllChannelsList'])->name('Channel.all');
     });
 
 
