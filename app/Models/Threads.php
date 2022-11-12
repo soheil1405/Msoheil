@@ -13,6 +13,13 @@ class Threads extends Model
 
 
 
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'score' ,
+        'flag'
+    ];
 
 
 

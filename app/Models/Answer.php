@@ -10,6 +10,13 @@ class Answer extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'score' ,
+        'flag'
+    ];
 
 
 

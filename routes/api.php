@@ -28,8 +28,12 @@ Route::prefix('/v1')->group(function(){
     //channel Routs
 
     Route::prefix('/channel')->group(function(){
+        Route::get('/all'         ,[Channelcontroller::class , 'grtAllChannelsList'])->name('Channel.all');
+        Route::post('/create'     ,[Channelcontroller::class , 'createNewChannel'  ])->name('Channel.CreateNew');
+        Route::put('/update'      ,[Channelcontroller::class , 'update'            ])->name('Channel.update');
+        Route::delete('/delete'   ,[Channelcontroller::class , 'destroy'           ])->name('Channel.delete');
 
-        Route::get('/all'      ,[Channelcontroller::class , 'grtAllChannelsList'])->name('Channel.all');
+
     });
 
 

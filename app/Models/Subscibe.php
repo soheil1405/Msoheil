@@ -11,6 +11,13 @@ class Subscibe extends Model
 
 
 
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'score' ,
+        'flag'
+    ];
 
 
 
