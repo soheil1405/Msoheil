@@ -4,6 +4,10 @@ namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Laravel\Sanctum\Http\MiddleWare\EnsureFrontendRequestsAreStateful;
+use Spatie\Permission\Middlewares\RoleMiddleware;
+use Spatie\Permission\Middlewares\RoleOrPermissionMiddleware;
+use Spatie\Permission\Models\Permission;
+
 class Kernel extends HttpKernel
 {
     /**
@@ -63,6 +67,9 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'role'=> RoleMiddleware::class ,
+        'permission'=>Permission::class ,
+        'role_or_permission'=>RoleOrPermissionMiddleware::class ,
         'jwt.auth'=>App\Http\Middleware\JwtMiddleWare::class,
         'jwt.verify'=>'Tymon\JWTAuth\MiddleWare\GetUserFormToken',
         'jwt.refresh'=>'Tymon\JWTAuth\MiddleWare\RefreshToken'
