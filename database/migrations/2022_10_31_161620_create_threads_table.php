@@ -18,23 +18,23 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            
+
 
 
             $table->foreignId('user_id')
                     ->constrained()
                     ->onDelete('cascade');
-            
+
             $table->foreignId('channel_id')
                     ->constrained()
                     ->onDelete('cascade');
-    
 
 
-            //best answer id        
-            $table->UnsignedBigInteger('best_answer_id');      
-            
-    
+
+            //best answer id
+            $table->UnsignedBigInteger('best_answer_id')->nullable();
+
+
             $table->boolean('flag')->default(1);
 
             $table->timestamps();

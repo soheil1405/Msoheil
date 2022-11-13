@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationData;
 use Illuminate\Validation\ValidationException as ValidationValidationException;
+use League\Flysystem\Config;
 
 class AuthController extends Controller
 {
@@ -23,12 +24,16 @@ class AuthController extends Controller
         ]);
 
 
-        resolve(UserRepository::class)->create($request);
+       $user = resolve(UserRepository::class)->create($request);
+
+       $Defualt_Super_Admin = config('permission.dedfualt_super_admin_email');
+       $user->email ===$Defualt_Super_Admin ? $user->assignRole('Super Admin') : $user->assignRole('User');
+
 
         return response()->json([
             'massage'=>'successfully'
         ] ,200);
-     
+
     }
     public function login(Request $request){
 
@@ -51,7 +56,7 @@ class AuthController extends Controller
 
 
 
-        
+
     }
 
     public function user(){
